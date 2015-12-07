@@ -30,18 +30,20 @@ public class MailServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String name=(String) request.getParameter("name");
 		String phone=(String) request.getParameter("phone");
 		String email=(String) request.getParameter("email");
 		String message=(String) request.getParameter("message");
-		System.out.println(message);
-		System.out.println(name);
+		if(name==null||email==null||message==null){
+			response.getWriter().write("请填写必要信息再发送");
+		}
 		JavaMailUtils javaMailUtils=new JavaMailUtils();
 		javaMailUtils.setHost("smtp.163.com");
-		javaMailUtils.setAccount("zhuoyuechn@163.com", "Zhuoyue007");
-		response.setContentType("text/html;charset=UTF-8");
+		javaMailUtils.setAccount("zhuoyueresume@163.com", "ldnbfozqywnfvygk");//专门申请一个,网易第三方客户端需要使用授权码来登陆，而不是原来的密码
+	
 		try {
-			javaMailUtils.send("zhuoyuechn@163.com", "540134090@qq.com", "来自我的web简历:"+"名字"+name+"邮箱"+email+"电话"+phone, message);			
+			javaMailUtils.send("zhuoyueresume@163.com", "zhuoyuechn@163.com", "来自我的web简历:"+"名字:"+name+"邮箱:"+email+"电话:"+phone, message);			
 			response.getWriter().write("信息发送成功");
 		} catch (MailException e) {
 			e.printStackTrace();

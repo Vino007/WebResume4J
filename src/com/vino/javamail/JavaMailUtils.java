@@ -17,9 +17,9 @@ import javax.mail.internet.MimeMessage;
  */
 public class JavaMailUtils {
 
-	String host = "";
-	String user = "";
-	String password = "";
+	String host = null;
+	String user = null;
+	String password = null;
 
 	public void setHost(String host) {
 		this.host = host;
@@ -62,6 +62,7 @@ public class JavaMailUtils {
 			transport.close();
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new MailException();
 		}
 	}

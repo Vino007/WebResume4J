@@ -2,7 +2,7 @@
     <wb-module deploy-name="WebResume">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="WebResume"/>
         <property name="java-output-path" value="/WebResume/build/classes"/>
+        <property name="context-root" value="WebResume"/>
     </wb-module>
 </project-modules>
